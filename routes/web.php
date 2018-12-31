@@ -17,8 +17,13 @@ Route::get('/', function () {
 
 
 
-Route::get('hello', function () {
-    return '<html><body>hello</body></html>';
+// ?つければ無くても大丈夫なパターン この場合だと0になる
+Route::get('hello/{id?}/{pass?}', 'HelloController@index');
+
+
+
+Route::get('hello1', function () {
+    return '<html><body>hello1</body></html>';
 });
 
 
