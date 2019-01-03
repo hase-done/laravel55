@@ -17,6 +17,20 @@ Route::get('/', function () {
 
 
 
+Route::get('cards', 'CardsController@index');
+
+Route::get('cards/add', 'CardsController@add');
+Route::post('cards/add', 'CardsController@create');
+
+Route::get('cards/show/{id}', 'CardsController@show');
+
+Route::get('cards/edit/{id}', 'CardsController@edit');
+Route::post('cards/edit/{id}', 'CardsController@update');
+
+Route::get('cards/del/{id}', 'CardsController@del');
+Route::post('cards/del/{id}', 'CardsController@remove');
+
+
 // ?つければ無くても大丈夫なパターン この場合だと0になる
 Route::get('hello/{id?}/{pass?}', 'HelloController@index');
 
