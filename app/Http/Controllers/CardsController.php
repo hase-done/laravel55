@@ -28,6 +28,20 @@ class CardsController extends Controller
         $card->type = $request->type;
         $card->description = $request->description;
         $card->save();
+
+// dump($form);exit;
+        if (isset($form['image_name'])) {
+// TODO validate
+            $imageName = str_pad($card->id, 5, 0, STR_PAD_LEFT) . '.' . $form['image_name']->getClientOriginalExtension();
+            $request->file('image_name')->move(
+// TODO storageに入れてpublicとリンク張るのが良いらしいがvagrantだと出来ないので直接公開ディレクトリに入れる https://teratail.com/questions/89984
+                // base_path() . '/storage/app/public/card_images', $imageName
+                base_path() . '/public/storage/card_images', $imageName
+            );
+            $card->image_name = $imageName;
+            $card->save();
+        }
+
         return redirect('/cards');
     }
 
@@ -47,6 +61,20 @@ class CardsController extends Controller
     {
         $card = Card::find($id);
         $form = $request->all();
+
+        $card->image_name = null;
+// dump($form);exit;
+        if (isset($form['image_name'])) {
+// TODO validate
+            $imageName = str_pad($id, 5, 0, STR_PAD_LEFT) . '.' . $form['image_name']->getClientOriginalExtension();
+            $request->file('image_name')->move(
+// TODO storageに入れてpublicとリンク張るのが良いらしいがvagrantだと出来ないので直接公開ディレクトリに入れる https://teratail.com/questions/89984
+                // base_path() . '/storage/app/public/card_images', $imageName
+                base_path() . '/public/storage/card_images', $imageName
+            );
+            $card->image_name = $imageName;
+        }
+
         unset($form['_token']);
         $card->id = $id;
         $card->name = $request->name;

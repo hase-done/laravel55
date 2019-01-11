@@ -4,7 +4,7 @@
 
 @section('content')
   <table>
-    <form action="/cards/add" method="post">
+    <form action="/cards/add" method="post" enctype="multipart/form-data">
       {{ csrf_field() }}
       <tr>
         <th>
@@ -30,6 +30,15 @@
         </th>
         <td>
           <input type="text" name="description" value="{{old('description')}}">
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+          画像
+        </th>
+        <td>
+          <input type="file" name="image_name">
         </td>
       </tr>
 
