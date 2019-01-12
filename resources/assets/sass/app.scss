@@ -12,3 +12,15 @@
   max-width: 100px;
   max-hight: 100px;
 }
+
+.into_compare_list {
+  background: gray;
+  color: white;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+      background: #FF00FF;
+  }
+}

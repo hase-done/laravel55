@@ -4,7 +4,6 @@
     <title>@yield('title')</title>
     <script src="/js/manifest.js"></script>
     <script src="/js/vendor.js"></script>
-    <script src="/js/app.js"></script>
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
   </head>
 
@@ -20,8 +19,9 @@
     </div>
 
     <div class="footer">
-      @yield('footer')
+    @include('components.footer')
     </div>
 
   </body>
+  <script src="/js/app.js"></script>
 </html>

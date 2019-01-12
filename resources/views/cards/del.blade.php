@@ -28,7 +28,6 @@
         @else
           <img class="card_image" src="/storage/card_images/noimage.png">
         @endif
-        <input type="file" name="image_name">
       </td>
       <td><a href="/cards/show/{{$card->id}}">詳細</a></td>
       <td><a href="/cards/edit/{{$card->id}}">編集</a></td>
