@@ -67,19 +67,22 @@ const CompareComp = {
 var app = new Vue({
   el: '#item_list',
   data: {
-    compare_list: [],
+    compare_list: {},
+    compared: {},
     message: 'this is message'
   },
   methods: {
     intoCompareList: function(cardId, cardName, cardImage) {
-      this.compare_list.push({
-        id: cardId,
-        name: cardName,
-        image: cardImage,
-      })
-      // this.compare_list[cardId] = cardName
-      console.log(this.compare_list)
+      this.$set(this.compare_list, cardId, {id: cardId, name: cardName, image: cardImage})
+      this.$set(this.compared, cardId, true)
       this.message = cardName + '追加'
+      console.log(this.compare_list)
+    },
+    outofCompareList: function(cardId) {
+      this.$delete(this.compare_list, cardId)
+      this.$delete(this.compared, cardId, true)
+      this.message = cardId + '削除'
+      console.log(this.compare_list)
     }
   },
   components: {

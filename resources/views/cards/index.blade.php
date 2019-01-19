@@ -4,7 +4,9 @@
 
 @section('content')
 <div id="item_list">
+<pre>
 @{{ $data }}
+</pre>
   @foreach ($cards as $card)
     @if ($loop->first)
 
@@ -38,7 +40,10 @@
           <td><a href="/cards/show/{{$card->id}}">詳細</a></td>
           <td><a href="/cards/edit/{{$card->id}}">編集</a></td>
           <td><a href="/cards/del/{{$card->id}}">削除</a></td>
-          <td><span class="into_compare_list" v-on:click="intoCompareList({{$card->id}}, '{{$card->name}}', '{{$card->image_name}}')">比較する</span></td>
+          <td>
+            <span v-if="compared[{{$card->id}}]" v-cloak class="outof_compare_list" v-on:click="outofCompareList({{$card->id}}, '{{$card->name}}', '{{$card->image_name}}')">比較からはずす</span>
+            <span v-else class="into_compare_list" v-cloak v-on:click="intoCompareList({{$card->id}}, '{{$card->name}}', '{{$card->image_name}}')">比較する</span>
+          </td>
         </tr>
     @if ($loop->last)
       </table>

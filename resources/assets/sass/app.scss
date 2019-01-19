@@ -24,3 +24,17 @@
       background: #FF00FF;
   }
 }
+.outof_compare_list {
+  background: #FF00FF;
+  color: white;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+      background: gray;
+  }
+}
+[v-cloak] {
+  display: none;
+}
