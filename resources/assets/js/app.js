@@ -68,21 +68,32 @@ var app = new Vue({
   el: '#item_list',
   data: {
     compare_list: {},
-    compared: {},
-    message: 'this is message'
+    message: 'this is message',
+    has_compar: false,
+    is_modal: false,
   },
   methods: {
     intoCompareList: function(cardId, cardName, cardImage) {
       this.$set(this.compare_list, cardId, {id: cardId, name: cardName, image: cardImage})
-      this.$set(this.compared, cardId, true)
       this.message = cardName + '追加'
+      this.has_compar = true
       console.log(this.compare_list)
     },
     outofCompareList: function(cardId) {
       this.$delete(this.compare_list, cardId)
-      this.$delete(this.compared, cardId, true)
       this.message = cardId + '削除'
+      if (0 === Object.keys(this.compare_list).length) {
+        this.has_compar = false
+      }
+
+// TODO false条件
+      // this.is_modal = false
+
       console.log(this.compare_list)
+    },
+    popupModal: function() {
+      this.is_modal = true
+      alert('popupModal')
     }
   },
   components: {

@@ -41,7 +41,7 @@
           <td><a href="/cards/edit/{{$card->id}}">編集</a></td>
           <td><a href="/cards/del/{{$card->id}}">削除</a></td>
           <td>
-            <span v-if="compared[{{$card->id}}]" v-cloak class="outof_compare_list" v-on:click="outofCompareList({{$card->id}}, '{{$card->name}}', '{{$card->image_name}}')">比較からはずす</span>
+            <span v-if="compare_list[{{$card->id}}]" v-cloak class="outof_compare_list" v-on:click="outofCompareList({{$card->id}}, '{{$card->name}}', '{{$card->image_name}}')">比較からはずす</span>
             <span v-else class="into_compare_list" v-cloak v-on:click="intoCompareList({{$card->id}}, '{{$card->name}}', '{{$card->image_name}}')">比較する</span>
           </td>
         </tr>
@@ -50,5 +50,6 @@
     @endif
   @endforeach
 <compare-component v-bind:compare_list="compare_list"></compare-component>
+<span v-if="has_compar" class="popup_compare" v-on:click="popupModal()">今すぐ比較する</span>
 </div>
 @endsection
